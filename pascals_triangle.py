@@ -1,15 +1,19 @@
 import turtle
 import math 
 
-SIDE_LENGTH = 50
+SIDE_LENGTH = 40
 WIDTH = SIDE_LENGTH * math.sqrt(3)
 Y_OFFSET = SIDE_LENGTH / 2
 
+FONT_SIZE=24
+
+NUM_ROWS=16
+
 BACKGROUND_COLOR = "white" # '#FFD8AC'
 LINE_COLOR = "black"
-ODD_FILL_COLOR = "grey90"
+ODD_FILL_COLOR = "white"
 ODD_TEXT_COLOR = "black"
-EVEN_FILL_COLOR = "white"
+EVEN_FILL_COLOR = "grey90"
 EVEN_TEXT_COLOR = "black"
 
 turtle.setup()
@@ -48,7 +52,7 @@ def hexagon(row, column, number):
     turtle.color(EVEN_TEXT_COLOR)
   else:
     turtle.color(ODD_TEXT_COLOR)
-  turtle.write(number, align="center", font=('Arial', 32, 'normal'))
+  turtle.write(number, align="center", font=('Arial', FONT_SIZE, 'normal'))
 
 def pascals(num_rows):
   rows = [[1], [1,1]]
@@ -61,15 +65,9 @@ def pascals(num_rows):
     rows.append(new_row)
   return rows
 
-
-# hexagon(0,0)
-# hexagon(-WIDTH, -3/2*SIDE_LENGTH)
-# hexagon(WIDTH, -3/2*SIDE_LENGTH)
-
-pascals_triangle = pascals(8)
+pascals_triangle = pascals(NUM_ROWS)
 for i, row in enumerate(pascals_triangle):
   for j, num in enumerate(row):
     hexagon(i, j, num)
-
 
 turtle.done()
